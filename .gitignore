@@ -1,0 +1,13 @@
+.DS_Store
+.vscode
+.idea
+*.dSYM
+*.gch
+*.swp
+*.out
+*.o
+*.a
+checker
+checker_Mac
+push_swap
+checker_linux

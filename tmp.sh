@@ -1,0 +1,1 @@
+gcc -Wextra -Werror -Wall errors.c reverse_rotate.c first_3M.c rotate.c good_massiv.c list.c push_swap.c swap.c src.c put.c -o push_swap
