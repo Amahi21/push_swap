@@ -101,6 +101,7 @@ int main(int ac, char **av)
 	t_info		*info;
 
 	info = (t_info *)malloc(sizeof(t_info));
+	stack_b = NULL;
 	info->ac = ac - 1;
 	stack_a = init_all(ac, av, stack_a, info);
 	push_swap(&stack_a, &stack_b, info);

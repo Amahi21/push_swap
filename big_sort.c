@@ -31,7 +31,7 @@ void	push_b(t_list **stack_a, t_list **stack_b, t_info *info)
 	int	counter;
 
 	counter = 0;
-	while (*stack_a)
+	while ((*stack_a)->next)
 	{
 		if ((*stack_a)->index <= counter)
 		{
@@ -73,7 +73,7 @@ void	big_sort(t_list **stack_a, t_list **stack_b, t_info *info)
 	push_b(stack_a, stack_b, info);
 
 	n = len_list(stack_b);
-	while ((*stack_b))
+	while ((*stack_b)->next)
 	{
 		i = 0;
 		tmp = *stack_b;
