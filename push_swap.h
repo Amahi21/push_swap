@@ -18,35 +18,21 @@
 # include <limits.h>
 # include <stdio.h>
 
-typedef struct s_info
-{
-	int min;
-	int med;
-	int max;
-
-	int ra;
-	int rra;
-	int rb;
-	int rrb;
-
-	int	len_a;
-	int	len_b;
-	int	sum;
-	int flag;
-	int a;
-	int b;
-	int tmp;
-
-	int counter;
-	int	ac;
-}	t_info;
-
 typedef struct	s_list
 {
 	int				value;
 	int				index;
 	struct s_list 	*next;
 }	t_list;
+
+typedef struct s_info
+{
+	int min;
+	int med;
+	int max;
+
+	int	ac;
+}	t_info;
 
 // push_swap.c
 void	out(t_list *stack_a, t_list *stack_b, t_info *info);
@@ -63,7 +49,6 @@ void	dublucate(char **av);
 int		len_av(char **s);
 int		len_list(t_list **stack);
 int		*sorted_massiv(char **av, int ac, t_info *info);
-int		count_n(int len);
 
 // list.c
 t_list	*init_list(int value, int index);
@@ -95,7 +80,9 @@ void	sort_3(t_list **stack_a, t_info *info);
 void	sort_5_push_b(t_list **stack_a, t_list **stack_b, int num);
 
 // big_sort.c
-void	put_m(int num, t_list **stack_a, t_list **stack_b);
+int		number(int n);
+void	push_b(t_list **stack_a, t_list **stack_b, t_info *info);
+void	sort(int n, int i, t_list **stack_a, t_list **stack_b);
 void	big_sort(t_list **stack_a, t_list **stack_b, t_info *info);
 
 #endif // PUSH_SWAP

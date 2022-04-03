@@ -12,86 +12,78 @@
 
 #include "push_swap.h"
 
-void put_3m(t_list **stack_a, t_list **stack_b, t_info *info)
+int	number(int n)
 {
-	t_list *tmp;
+	int	res;
 
-	while (*stack_a)
+	res = 12;
+	while (n > 0)
 	{
-		if (len_list(stack_a) == 3)
-			break;
-		if ((*stack_a)->value == info->max || (*stack_a)->value == info->med || (*stack_a)->value == info->min)
-		{
-			tmp = (*stack_a)->next;
-			ra(stack_a);
-			*stack_a = tmp;
-		}
-		else
-			pb(stack_a, stack_b);
+		if (n % 27 == 0)
+			res++;
+		n--;
 	}
-	sort_3(stack_a, info);
+	return (res);
 }
 
-void	move(t_list **stack_a, t_list **stack_b, t_info *info)
+void	push_b(t_list **stack_a, t_list **stack_b, t_info *info)
 {
+	int	counter;
+
+	counter = 0;
+	while (*stack_a)
+	{
+		if ((*stack_a)->index <= counter)
+		{
+			pb(stack_a, stack_b);
+			rb(stack_b);
+			counter++;
+		}
+		else if ((*stack_a)->index <= counter + number(info->ac))
+		{
+			pb(stack_a, stack_b);
+			counter++;
+		}
+		else
+			ra(stack_a);
+	}
 	
 }
 
-void	buffer(int a, int b, t_info *info)
+void	sort(int n, int i, t_list **stack_a, t_list **stack_b)
 {
-	info->a = a;
-	info->b = b;
-	if (a + b < info->sum)
-		info->sum = a + b;
-	else if (a + info->len_b - b < info->sum)
-		info->sum = a + info->len_b - b;
-	else if (info->len_a - a + b < info->sum)
-		info->sum = info->len_a - a + b;
-	else if (info->len_a - a + info->len_b - b < info->sum)
-		info->sum = info->len_a - a + info->len_b - b;
-	if (a < info->len_a / 2 && b < info->len_b / 2)
-		info->flag = 1;
-	else if (a >= info->len_a / 2 && b < info->len_b / 2)
-		info->flag = 2;
-	else if (a < info->len_a / 2 && b >= info->len_b / 2)
-		info->flag = 3;
-	else if (a >= info->len_a / 2 && b >= info->len_b / 2)
-		info->flag = 4;
-}
-
-void	score(t_list **stack_a, t_list **stack_b, t_info *info)
-{
-	t_list	*tmpa;
-	t_list	*tmpb;
-	int		a;
-	int		b;
-
-	a = 0;
-	tmpa = *stack_a;
-	while (tmpa->next)
+	if (i >= (n / 2))
 	{
-		b = 0;
-		tmpb = *stack_b;
-		while (tmpb->next)
-		{
-			if (tmpb->index > tmpa->index && tmpb->index < tmpa->next->index)
-					buffer(a, b, info);
-			b++;
-			tmpb = tmpb->next;
-		}
-		a++;
-		tmpa = tmpa->next;
+		while ((*stack_b)->index != n)
+			rrb(stack_b);
 	}
+	else
+	{
+		while ((*stack_b)->index != n)
+			rb(stack_b);
+	}
+	pa(stack_a, stack_b);
 }
 
 void	big_sort(t_list **stack_a, t_list **stack_b, t_info *info)
 {
-	put_3m(stack_a, stack_b, info);
-	while (*stack_b)
+	int		i;
+	int		n;
+	t_list	*tmp;
+	push_b(stack_a, stack_b, info);
+
+	n = len_list(stack_b);
+	while ((*stack_b))
 	{
-		info->len_a = len_list(stack_a);
-		info->len_b = len_list(stack_b);
-		info->sum = INT_MAX;
-		score(stack_a, stack_b, info);
+		i = 0;
+		tmp = *stack_b;
+		while (tmp->index != n)
+		{
+			tmp = tmp->next;
+			i++;
+		}
+		sort(n, i, stack_a, stack_b);
+		i = 0;
+		n--;
 	}
 }

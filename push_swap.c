@@ -61,7 +61,6 @@ t_list *init_all(int ac, char **av, t_list *stack_a, t_info *info)
 		}
 		i++;
 	}
-	// sortes_checker(&stack_a);
 	return(stack_a->next);
 }
 
@@ -103,15 +102,8 @@ int main(int ac, char **av)
 
 	info = (t_info *)malloc(sizeof(t_info));
 	info->ac = ac - 1;
-	stack_b = NULL;
-	stack_a = NULL;
-	info->ra = INT_MAX;
-	info->rra = INT_MAX;
-	info->rb = INT_MAX;
-	info->rrb = INT_MAX;
-	info->sum = INT_MAX;
 	stack_a = init_all(ac, av, stack_a, info);
 	push_swap(&stack_a, &stack_b, info);
 	// printf("nos = %d\n\n", info->nos);
-	out(stack_a, stack_b, info);
+	// out(stack_a, stack_b, info);
 }

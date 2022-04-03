@@ -71,12 +71,3 @@ int	*sorted_massiv(char **av, int ac, t_info *info)
 	info->min = tmp_str[0];
 	return (tmp_str);
 }
-
-void	null(t_info *info)
-{
-	info->ra = 0;
-	info->rra = 0;
-	info->rb = 0;
-	info->rrb = 0;
-	info->sum = INT_MAX;
-}
