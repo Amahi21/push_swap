@@ -6,42 +6,41 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 23:02:05 by amahi             #+#    #+#             */
-/*   Updated: 2022/03/28 02:51:01 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/05 01:39:01 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-
-t_list *init_all(int ac, char **av, t_list *stack_a, t_info *info)
+t_list	*init_all(int ac, char **av, t_list *stack_a, t_info *info)
 {
 	t_list		*new;
 	int			*sorted_mass;
-	int			i;
-	int			j;
 
-	dublucate(av);
 	sorted_mass = sorted_massiv(av, ac, info);
-	i = 1;
-	stack_a = init_list(form_char_to_int(av[1]), i);
-	while (i < ac)
+	info->i = 1;
+	while (info->i < ac)
 	{
-		j = 0;
-		while (j < ac - 1)
+		info->j = 0;
+		while (info->j < ac - 1)
 		{
-			if (form_char_to_int(av[i]) == sorted_mass[j])
+			if (form_char_to_int(av[info->i]) == sorted_mass[info->j])
 			{
-				new = init_list(form_char_to_int(av[i]), j + 1);
-				add_elem_back(&stack_a, new);
+				new = init_list(form_char_to_int(av[info->i]), info->j + 1);
+				if (info->i == 1)
+					stack_a = new;
+				else
+					add_elem_back(&stack_a, new);
 			}
-			j++;
+			info->j++;
 		}
-		i++;
+		info->i++;
 	}
-	return(stack_a->next);
+	free(sorted_mass);
+	return (stack_a);
 }
 
-void push_swap(t_list **stack_a, t_list **stack_b, t_info *info)
+void	push_swap(t_list **stack_a, t_list **stack_b, t_info *info)
 {	
 	if (info->ac == 2)
 	{
@@ -59,19 +58,12 @@ void push_swap(t_list **stack_a, t_list **stack_b, t_info *info)
 		pa(stack_a, stack_b);
 	}
 	else if (info->ac == 5)
-	{
-		sort_5_push_b(stack_a, stack_b, info->max);
-		sort_5_push_b(stack_a, stack_b, info->min);
-		sort_3(stack_a, info);
-		pa(stack_a, stack_b);
-		pa(stack_a, stack_b);
-		ra(stack_a);
-	}
+		sort_5(stack_a, stack_b, info);
 	else
 		big_sort(stack_a, stack_b, info);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_list		*stack_a;
 	t_list		*stack_b;
@@ -80,6 +72,15 @@ int main(int ac, char **av)
 	info = (t_info *)malloc(sizeof(t_info));
 	stack_b = NULL;
 	info->ac = ac - 1;
+	if (info->ac <= 1)
+		errors("Error");
+	dublucate(av);
 	stack_a = init_all(ac, av, stack_a, info);
-	push_swap(&stack_a, &stack_b, info);
+	if (is_sorted(stack_a))
+	{
+		push_swap(&stack_a, &stack_b, info);
+	}
+	free_stack(stack_a);
+	free_stack(stack_b);
+	free(info);
 }

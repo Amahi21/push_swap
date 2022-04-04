@@ -1,6 +1,6 @@
 NAME = push_swap
 
-FLAGS = -Wextra -Werror -Wall
+FLAGS = -Wextra -Werror -Wall -fsanitize=address
 
 LIST =	push_swap.c		errors.c		\
 		swap.c			good_massiv.c	\
@@ -9,11 +9,17 @@ LIST =	push_swap.c		errors.c		\
 		src.c			mini_sort.c		\
 		big_sort.c
 
-all:	
-	gcc $(LIST) -o $(NAME)
+OBJECT	=	$(LIST:.c=.o)
 
-clean:
-	rm -f push_swap
+all		:	
+			$(CC) $(LIST) $(FALGS) -o $(NAME)
+
+%.o		:	%.c
+			$(CC) $(FALGS) -o $(NAME)
+
+clean	:
+			rm -f ()
+			rm -f push_swap
 
 ####################
 ####	FLAGS	####

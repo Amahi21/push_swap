@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 23:31:40 by amahi             #+#    #+#             */
-/*   Updated: 2022/03/29 23:38:14 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/04 19:40:14 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ void	push_b(t_list **stack_a, t_list **stack_b, t_info *info)
 		else
 			ra(stack_a);
 	}
-	
 }
 
 void	sort(int n, int i, t_list **stack_a, t_list **stack_b)
@@ -70,8 +69,8 @@ void	big_sort(t_list **stack_a, t_list **stack_b, t_info *info)
 	int		i;
 	int		n;
 	t_list	*tmp;
-	push_b(stack_a, stack_b, info);
 
+	push_b(stack_a, stack_b, info);
 	n = len_list(stack_b);
 	while ((*stack_b))
 	{

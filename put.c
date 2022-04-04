@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:50:41 by amahi             #+#    #+#             */
-/*   Updated: 2022/03/27 18:10:12 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/04 19:59:10 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	put(t_list **stack_a, t_list **stack_b)
 {
-	t_list *tmp;
-	
+	t_list	*tmp;
+
 	tmp = (*stack_b);
 	(*stack_b) = (*stack_b)->next;
 	tmp->next = (*stack_a);

@@ -6,13 +6,13 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:50:46 by amahi             #+#    #+#             */
-/*   Updated: 2022/03/27 21:06:33 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/04 19:59:57 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void rotate(t_list **head)
+void	rotate(t_list **head)
 {
 	t_list	*tmp;
 	t_list	*tmp1;
