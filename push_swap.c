@@ -12,29 +12,6 @@
 
 #include "push_swap.h"
 
-void	out(t_list *stack_a, t_list *stack_b, t_info *info)
-{
-	while(stack_a != NULL  || stack_b != NULL)
-	{
-		if (stack_a != NULL)
-		{
-			printf("stack a[%d] = %d", stack_a->index, stack_a->value);
-			stack_a = stack_a->next;
-		}
-		else
-			printf("\t");
-		if (stack_b != NULL)
-		{
-			printf("\t\tstack b[%d] = %d \n", stack_b->index, stack_b->value);
-			stack_b = stack_b->next;
-		}
-		else
-			printf("\n");
-	}
-	printf("min = %d\n", info->min);
-	printf("med = %d\n", info->med);
-	printf("max = %d\n\n", info->max);
-}
 
 t_list *init_all(int ac, char **av, t_list *stack_a, t_info *info)
 {
@@ -69,7 +46,7 @@ void push_swap(t_list **stack_a, t_list **stack_b, t_info *info)
 	if (info->ac == 2)
 	{
 		if ((*stack_a)->index == 2)
-			sa(stack_b);
+			sa(stack_a);
 	}
 	else if (info->ac == 3)
 	{
@@ -105,6 +82,4 @@ int main(int ac, char **av)
 	info->ac = ac - 1;
 	stack_a = init_all(ac, av, stack_a, info);
 	push_swap(&stack_a, &stack_b, info);
-	// printf("nos = %d\n\n", info->nos);
-	// out(stack_a, stack_b, info);
 }

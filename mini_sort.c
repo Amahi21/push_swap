@@ -14,20 +14,15 @@
 
 void	sort_3(t_list **stack_a, t_info *info)
 {
-	if ((*stack_a)->index < (*stack_a)->next->index
-		&& (*stack_a)->next->index < (*stack_a)->next->next->index)
+	if ((*stack_a)->index < (*stack_a)->next->index									
+		&& (*stack_a)->next->index < (*stack_a)->next->next->index)					
 		return ;
-	if ((*stack_a)->next->index < (*stack_a)->next->next->index
-		&& (*stack_a)->next->next->index < (*stack_a)->index)
-		ra(stack_a);
-	else if ((*stack_a)->next->index < (*stack_a)->next->next->index
+	if ((*stack_a)->index < (*stack_a)->next->index
 		&& (*stack_a)->index > (*stack_a)->next->next->index)
 		rra(stack_a);
-	else if ((*stack_a)->index > (*stack_a)->next->index && (*stack_a)->next->index > (*stack_a)->next->next->index)
-	{
+	else if ((*stack_a)->next->next->index < (*stack_a)->index
+		&& (*stack_a)->next->index < (*stack_a)->next->next->index)
 		ra(stack_a);
-		sa(stack_a);
-	}
 	else
 	{
 		sa(stack_a);
