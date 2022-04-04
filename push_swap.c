@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/14 23:02:05 by amahi             #+#    #+#             */
-/*   Updated: 2022/04/05 01:39:01 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/05 01:54:01 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	main(int ac, char **av)
 
 	info = (t_info *)malloc(sizeof(t_info));
 	stack_b = NULL;
+	stack_a = NULL;
 	info->ac = ac - 1;
 	if (info->ac <= 1)
 		errors("Error");

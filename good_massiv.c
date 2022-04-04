@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 19:50:32 by amahi             #+#    #+#             */
-/*   Updated: 2022/04/05 01:30:13 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/05 02:03:20 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	is_sorted(t_list *first)
 int	form_char_to_int(char *s)
 {
 	int		i;
-	int		neg;
+	long	neg;
 	long	tmp;
 
 	i = 0;
@@ -52,7 +52,7 @@ int	form_char_to_int(char *s)
 			errors("Error");
 		i++;
 	}
-	return ((int)tmp * neg);
+	return ((int)(tmp * neg));
 }
 
 void	dublucate(char **av)

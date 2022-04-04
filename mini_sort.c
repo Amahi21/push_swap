@@ -6,7 +6,7 @@
 /*   By: amahi <amahi@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/27 18:07:26 by amahi             #+#    #+#             */
-/*   Updated: 2022/04/04 20:07:52 by amahi            ###   ########.fr       */
+/*   Updated: 2022/04/05 01:54:48 by amahi            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	sort_3(t_list **stack_a, t_info *info)
 	}
 }
 
-void	r_score(t_list **stack_a, t_list **stack_b, int score, int len)
+void	r_score(t_list **stack_a, int score, int len)
 {
 	if (score < 3)
 	{
@@ -65,7 +65,7 @@ void	sort_5_push_b(t_list **stack_a, t_list **stack_b, int num)
 		score++;
 	}
 	*stack_a = tmp;
-	r_score(stack_a, stack_b, score, len);
+	r_score(stack_a, score, len);
 	pb(stack_a, stack_b);
 }
 
